@@ -6,7 +6,6 @@ import ModalAddFood from '../../components/ModalAddFood';
 import ModalEditFood from '../../components/ModalEditFood';
 
 import { FoodsContainer } from './styles';
-import { number } from 'yup';
 
 interface IFood {
   id: number;
@@ -21,8 +20,8 @@ export default function Dashboard(){
   const [foods, setFoods] = useState<IFood[]>([]);
   const [editingFood, setEditingFood] = useState<IFood>({} as IFood);
 
-  const [modalOpen, setModalOpen] = useState();
-  const [editModalOpen, setEditModalOpen] = useState();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   
   useEffect(() => {
@@ -50,27 +49,23 @@ export default function Dashboard(){
     }
   }
 
-  // const handleUpdateFood = async (food: IFood) => {
-  //   const { foods, editingFood } = this.state;
-  //   const updatedFoods = [...foods]
-  //   const editingFood =
+  const handleUpdateFood = async (food: IFood) => {
+   
+    try {
+      const foodUpdated = await api.put(
+        `/foods/${editingFood.id}`,
+        { ...editingFood, ...food },
+      );
 
+      const foodsUpdated = foods.map(f =>
+        f.id !== foodUpdated.data.id ? f : foodUpdated.data,
+      );
 
-  //   try {
-  //     const foodUpdated = await api.put(
-  //       `/foods/${editingFood.id}`,
-  //       { ...editingFood, ...food },
-  //     );
-
-  //     const foodsUpdated = foods.map(f =>
-  //       f.id !== foodUpdated.data.id ? f : foodUpdated.data,
-  //     );
-
-  //     this.setState({ foods: foodsUpdated });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+      setFoods(foodsUpdated);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handleDeleteFood = async (id: number) => {
     const foodsUpdated = [...foods];
@@ -82,36 +77,33 @@ export default function Dashboard(){
     setFoods(foodsFiltered);
   }
 
-  // const toggleModal = () => {
-  //   const { modalOpen } = this.state;
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  }
 
-  //   this.setState({ modalOpen: !modalOpen });
-  // }
-
-  // const toggleEditModal = () => {
-  //   const { editModalOpen } = this.state;
-
-  //   this.setState({ editModalOpen: !editModalOpen });
-  // }
+  const toggleEditModal = () => {
+    setEditModalOpen(!editModalOpen);
+  }
 
   const handleEditFood = (food: IFood) => {
     setEditingFood({...food});
+    toggleEditModal()
   }
 
   return(
     <>
-      <Header /*openModal={this.toggleModal}*/ />
-      {/* <ModalAddFood
+      <Header openModal={toggleModal} />
+      <ModalAddFood
         isOpen={modalOpen}
-        setIsOpen={this.toggleModal}
-        handleAddFood={this.handleAddFood}
+        setIsOpen={toggleModal}
+        handleAddFood={handleAddFood}
       />
       <ModalEditFood
         isOpen={editModalOpen}
-        setIsOpen={this.toggleEditModal}
+        setIsOpen={toggleEditModal}
         editingFood={editingFood}
-        handleUpdateFood={this.handleUpdateFood}
-      /> */}
+        handleUpdateFood={handleUpdateFood}
+      />
 
       <FoodsContainer data-testid="foods-list">
         {foods &&
