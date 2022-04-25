@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import api from '../../services/api';
 import { Food } from '../../components/Food';
-import ModalAddFood from '../../components/ModalAddFood';
-import ModalEditFood from '../../components/ModalEditFood';
+import  { ModalAddFood }  from '../../components/ModalAddFood';
+import  { ModalEditFood }  from '../../components/ModalEditFood/index';
 
 import { FoodsContainer } from './styles';
 
@@ -15,6 +15,8 @@ interface IFood {
   available: boolean;
   image: string;
 }
+
+type IFoodAdd = Omit<IFood, "id">;
 
 export default function Dashboard(){
   const [foods, setFoods] = useState<IFood[]>([]);
@@ -33,7 +35,7 @@ export default function Dashboard(){
     getApiFoods()
   } , []);
 
-  const handleAddFood = async (food: IFood) => {
+  const handleAddFood = async (food: IFoodAdd) => {
     const foodsUpdated = [...foods];
 
     try {
@@ -50,7 +52,6 @@ export default function Dashboard(){
   }
 
   const handleUpdateFood = async (food: IFood) => {
-   
     try {
       const foodUpdated = await api.put(
         `/foods/${editingFood.id}`,
