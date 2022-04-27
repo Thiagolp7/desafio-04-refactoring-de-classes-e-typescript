@@ -1,7 +1,7 @@
  # 🍝 GoRestaurant
 > 👉 Aplicação feita no Charpter III - Ignite React da <a href="https://github.com/Rocketseat" target="_blank">Rocktseat</a>
 
-> No desafio foi proposto instalar typescript no projeto, refatorar todos os components e pages para componentes funcionais.
+> No desafio foi proposto instalar typescript no projeto, refatorar todos os components e pages que foram feitos com class para componentes funcionais.
 
 https://user-images.githubusercontent.com/92824127/165602896-5f202987-8fa7-46f5-b33e-e88807f4f2e3.mp4
 
@@ -54,28 +54,15 @@ npm start
 http://localhost:3000/
 ```
 
-
 --- 
 ## :hammer_and_wrench: Tecnologias
 
 <div align="right"> 
   
-  ![languages](https://img.shields.io/github/languages/count/thiagolp7/ignite-reactjs-criando-um-projeto-do-zero) 
+  ![languages](https://img.shields.io/github/languages/count/thiagolp7/desafio-04-refactoring-de-classes-e-typescript) 
 
 </div>
 
-- <a href="https://nextjs.org/"> NextJs </a>
+- <a href="https://reactjs.org/"> React JS </a>
 - <a href="https://www.typescriptlang.org/"> Typescript </a>
-- <a href="https://sass-lang.com/"> Sass </a>
-- <a href="https://prismic.io/"> Prismic CMS </a>
-- <a href="https://axios-http.com/"> Axios </a>
-
-
-
-
-
-
-
-
-
-
+- <a href="https://styled-components.com/"> Styled Components </a>
