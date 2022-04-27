@@ -60,3 +60,4 @@ http://localhost:3000/
 - <a href="https://reactjs.org/"> React JS </a>
 - <a href="https://www.typescriptlang.org/"> Typescript </a>
 - <a href="https://styled-components.com/"> Styled Components </a>
+- <a href="https://github.com/typicode/json-server"> Json Server(Fake API) </a>
