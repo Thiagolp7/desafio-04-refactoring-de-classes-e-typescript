@@ -5,19 +5,13 @@
 
 https://user-images.githubusercontent.com/92824127/165602896-5f202987-8fa7-46f5-b33e-e88807f4f2e3.mp4
 
-
-> 🔗 Deploy: https://ignite-reactjs-criando-um-projeto-do-zero.vercel.app/
 ---
 
 ## 📌 Implementação
 
-- [x] Layout responsivo
-- [x] Integração com Prismic CMS.
-- [x] Geração das páginas dos post estaticamente usando o getStaticProps do NextJS.
-- [x] Geração estática de alguns posts em tempo de build utilizando getStaticPaths.
-- [x] Fetch de novos posts ao clicar no "Carregar mais..." utilizando a páginação do Prismic.
-- [x] Função de calculo de tempo de leitura. 
-
+- [x] Intalação do Typescript
+- [x] Refatorar os class components para functional components
+- [ ] Responsive Layout
 
 ---
 ## :rocket: Execute o projeto
